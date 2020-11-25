@@ -42,6 +42,12 @@ static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
+/* media control */
+static const char *mpcnext[] = { "mpc", "next", NULL };
+static const char *mpcprev[] = { "mpc", "prev", NULL };
+static const char *mpctoggle[] = { "mpc", "toggle", NULL };
+static const char *mpcstop[] = { "mpc", "stop", NULL };
+
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -61,7 +67,6 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-#define XK_Print  0x0000ff61
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -113,6 +118,10 @@ static Key keys[] = {
     { 0,                    XF86XK_AudioMute,  spawn,          {.v = mutecmd } },    /* Volume Control */
     { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = voldowncmd } }, /* Volume Control */
     { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = volupcmd } },   /* Volume Control */
+    { 0,                     XF86XK_AudioNext,  spawn,          {.v = mpcnext } },
+    { 0,                     XF86XK_AudioPrev,  spawn,          {.v = mpcprev } },
+    { 0,                     XF86XK_AudioPlay,  spawn,          {.v = mpctoggle } },
+    { 0,                     XF86XK_AudioStop,  spawn,          {.v = mpcstop } },
 };
 
 /* button definitions */
