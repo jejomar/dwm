@@ -36,6 +36,12 @@ static const Rule rules[] = {
 /* screenshot  */
 static const char *screenshot[] = {"scrot","-d", "2", "-q", "100", "/home/ren/Pictures/screenshots/%Y-%m-%d-%T-scrot.png", NULL};
 
+/* volume control */
+#include <X11/XF86keysym.h>
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -103,7 +109,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    {0,                             XK_Print,  spawn,          {.v = screenshot } },
+    { 0,                            XK_Print,  spawn,          {.v = screenshot } }, /* PrtSc key to work */
+    { 0,                    XF86XK_AudioMute,  spawn,          {.v = mutecmd } },    /* Volume Control */
+    { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = voldowncmd } }, /* Volume Control */
+    { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = volupcmd } },   /* Volume Control */
 };
 
 /* button definitions */
