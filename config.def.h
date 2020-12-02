@@ -118,10 +118,10 @@ static Key keys[] = {
     { 0,                    XF86XK_AudioMute,  spawn,          {.v = mutecmd } },    /* Volume Control */
     { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = voldowncmd } }, /* Volume Control */
     { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = volupcmd } },   /* Volume Control */
-    { 0,                     XF86XK_AudioNext,  spawn,          {.v = mpcnext } },
-    { 0,                     XF86XK_AudioPrev,  spawn,          {.v = mpcprev } },
-    { 0,                     XF86XK_AudioPlay,  spawn,          {.v = mpctoggle } },
-    { 0,                     XF86XK_AudioStop,  spawn,          {.v = mpcstop } },
+    { 0,                    XF86XK_AudioNext,  spawn,          {.v = mpcnext } },
+    { 0,                    XF86XK_AudioPrev,  spawn,          {.v = mpcprev } },
+    { 0,                    XF86XK_AudioPlay,  spawn,          {.v = mpctoggle } },
+    { 0,                    XF86XK_AudioStop,  spawn,          {.v = mpcstop } },
 };
 
 /* button definitions */
