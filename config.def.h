@@ -34,7 +34,9 @@ static const Rule rules[] = {
 };
 
 /* screenshot  */
-static const char *screenshot[] = {"scrot","-d", "2", "-q", "100", "/home/ren/Pictures/screenshots/%Y-%m-%d-%T-scrot.png", NULL};
+/* static const char *screenshot[] = {"scrot","-d", "2", "-q", "100", "/home/ren/Pictures/screenshots/%Y-%m-%d-%T-scrot.png", "&&", NULL}; */
+static const char *screenshot[] = {"flameshot", "full", "-p", "/home/ren/Pictures/screenshots/flameshot/",  NULL};
+static const char *screenshotsel[] = {"flameshot", "gui", "-p", "/home/ren/Pictures/screenshots/flameshot/", NULL};
 
 /* volume control */
 #include <X11/XF86keysym.h>
@@ -115,6 +117,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
     { 0,                            XK_Print,  spawn,          {.v = screenshot } }, /* PrtSc key to work */
+    { ControlMask,                  XK_Print,  spawn,          {.v = screenshotsel } }, /* Launches Flameshot GUI */
     { 0,                    XF86XK_AudioMute,  spawn,          {.v = mutecmd } },    /* Volume Control */
     { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = voldowncmd } }, /* Volume Control */
     { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = volupcmd } },   /* Volume Control */
